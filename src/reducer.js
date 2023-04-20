@@ -18,4 +18,6 @@ export const reducer = (state = initialState, action) => {
             count: parseInt(action.payload, 10)
         }
     }
+
+    return state;
 }
