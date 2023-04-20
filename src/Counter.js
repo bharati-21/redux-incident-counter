@@ -1,19 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment, set } from "./actions";
 import { SetCounter } from "./SetCounter";
-import { bindActionCreators } from "redux";
+import { useCount } from "./useCount";
 
 export const Counter = () => {
   const incident = 'Incident';
-  const count = useSelector(({ count }) => count);
-  const dispatch = useDispatch();
+  const { count, increment, decrement, set } = useCount();
 
-  const actions = bindActionCreators({ increment, decrement, set }, dispatch);
+  const handleSet = () => set(0);
 
-  const handleSet = () => actions.set(0);
+  const handleIncrement = () =>  increment();
+  const handleDecrement = () => decrement();
 
-  const handleIncrement = () =>  actions.increment();
-  const handleDecrement = () => actions.decrement();
+  /* const actions = useActions({
+    increment, decrement, set
+  });
+  */
 
   return (
     <main className="Counter">
